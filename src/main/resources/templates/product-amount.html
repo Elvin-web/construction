@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qarabağ-Uğur 2020 MMC</title>
+    <link rel="icon" href="/img/fist_title.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+<body>
+
+
+<!-- Header -->
+<section id="Header">
+    <div class="container">
+        <div class="row header-all align-items-center justify-content-between">
+            <div class="col-lg-4 left">
+                <img src="/img/fist.png" alt="">
+                <a th:href="@{/index}">Karabakh-Ugur 2020</a>
+            </div>
+            <div class="col-lg-6 middle">
+                <ul>
+                    <li>
+                        <a th:href="@{/index}">Ana səhifə </a>
+                    </li>
+                    <li onclick="ToggleLi()">
+                        <a style="background-color: #fdc236;border-radius: 5px;color: #fff" th:href="@{/products(page=1)}">Kateqoriyalar </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/about}">Haqqımızda </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/contact}">Əlaqə </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-2">
+                <form th:action="@{/products/}" class="search-box">
+                    <div class="col-lg-2 right">
+                        <div class="search-box">
+                            <input type="text" th:name="name" placeholder="Mən axtarıram..." class="search-input"
+                                   autocomplete="off">
+                            <input type="text" hidden th:name="page" th:value="1">
+                            <button type="submit" class="search-btn-main">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Header -->
+
+
+<!-- Contact-banner -->
+<section id="Contact-banner">
+    <div class="overlay"></div>
+    <div class="container-fluid p-0">
+        <div class="header-wrapper">
+            <div class="zoominheader">
+                <div class="zoomoutheader">
+                    </br></br>
+                    </br></br>
+                    <h3 class="text"> Kateqoriyalar</h3>
+                    <a th:href="@{/index}">Ana səhifə </a>
+                    <span>/</span>
+                    <a th:href="@{/products(page=1)}">Kateqoriyalar </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Contact-banner -->
+
+
+<!-- Phone-Header -->
+<section id="Phone-header">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-2 left">
+                <img id="leftSideBar" src="/img/dots.png" alt="">
+            </div>
+            <div class="col-6 mid text-center">
+                <!-- <span>Qarabağ-Uğur 2020</span> -->
+            </div>
+            <div class="col-4 right text-right">
+                <img id="searchBtn" style="margin-right: 10px;" src="/img/search-interface-symbol.png" alt="">
+                <img onclick="OpenNav()" id="sidebarBtn" src="/img/hamburger.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="Search-media">
+    <form th:action="@{/products/}">
+        <div class="search-box pt-1">
+            <input type="text" th:name="name" placeholder="Mən axtarıram..." autocomplete="off"/>
+            <input type="text" hidden th:name="page" th:value="1">
+            <button type="submit" class="search-btn-main">
+                <i class="fas fa-search" style="color: black"></i>
+            </button>
+        </div>
+    </form>
+</section>
+
+
+<section id="Sidebar-menu">
+    <div id="menu" class="menu_text">
+        <a th:href="@{/index}">Ana Səhifə</a>
+        <a th:href="@{/products(page=1)}">Kateqoriyalar</a>
+        <a th:href="@{/about}">Haqqımızda</a>
+        <a th:href="@{/contact}">Əlaqə</a>
+    </div>
+</section>
+
+<section id="LeftSidebar-menu">
+    <div id="menu1" class="menu_text">
+        <div class="top">
+            <i class="fas fa-map-marker-alt">
+                <span>Məmməd Araz küçəsi, 35</span>
+            </i>
+            <i class="fas fa-phone-volume">
+                <span>050 265 64 63</span>
+            </i>
+        </div>
+        <div class="bottom">
+            <a href="#">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-facebook"></i>
+            </a>
+        </div>
+    </div>
+</section>
+<!-- Phone-Header -->
+
+<!-- Categories -->
+
+<section id="Phone-categories">
+    <span id="CategoryClick" class="sp-categories"><img style="margin-left: 25px;" src="/img/menu.png" alt=""> Kateqoriyalar</span>
+    <!-- <span id="FilterClick" class="sp-filter"><img src="photos/funnel.png" alt=""> Filterləmə</span> -->
+</section>
+
+
+<section id="Categories">
+    <div class="container">
+        <div class="category-toggle">
+            <ul>
+                <tr th:each="category: ${categories}">
+                    <li>
+                        <h5><a th:href="@{/products/category(name=${category.name},page=1)}">
+                            <td th:text="${category.getName()}"/>
+                        </a></h5>
+                    </li>
+                </tr>
+            </ul>
+        </div>
+        <div class="row justify-content-between">
+            <div class="category-box">
+                <div class="top">
+                    <h3>KATEQORİYALAR</h3>
+                </div>
+                <ul>
+                    <tr th:each="category: ${categories}">
+                        <li>
+                            <h5><a th:href="@{/products/category(name=${category.name},page=1)}">
+                                <td th:text="${category.getName()}"/>
+                            </a></h5>
+                        </li>
+                    </tr>
+                </ul>
+                <div class="price-filter-box">
+                    <h6>Qiymət</h6>
+                    <div class="price-filter-index d-flex align-items-center">
+                        <form th:action="@{/products/amount}">
+                            <input type="text" placeholder="min" th:name="min">
+                            <span>-</span>
+                            <input type="text" placeholder="max" th:name="max">
+                            <input type="text" placeholder="page" th:name="page" th:value="1" hidden>
+                            <button type="submit" class="search-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="category-right">
+                <h4>Məhsullar</h4>
+                <div class="row">
+
+                    <tr th:each="product: ${products.productDtoList}">
+
+                        <div class="col-lg-4 col-12 mt-3">
+                            <div class="box">
+                                <div class="top">
+                                    <img th:attr="src=@{'data:image/png;base64,'+${product.mainImageName}}"/>
+                                </div>
+                                <div class="bottom">
+                                    <h5>
+                                        <td th:text="${product.getName()}"/>
+                                    </h5>
+                                    <h6>
+                                        <td th:text="${product.getOldAmount()}"/>
+                                        <span>₼</span></h6>
+
+                                    <a th:href="@{/products/detail/(name=${product.name})}">Daha ətraflı</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </tr>
+
+                    <nav aria-label="pagination">
+                        <ol class="pagination justify-content-end mt-5">
+                            <th:block th:each="i: ${#numbers.sequence(1, products.pageCount)}">
+                                <li>
+                                    <a th:href="@{/products/amount(min=${products.min},max=${products.max},page=${i})}"
+                                       aria-label="Page 1" th:text="${i}" aria-current="page"></a>
+                                </li>
+                            </th:block>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Categories -->
+
+
+<!-- Footer -->
+<footer id="Footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 ft-left">
+                <div class="left d-flex align-items-center">
+                    <img src="/img/fist.png" alt="">
+                    <a th:href="@{/index}">Karabakh-Ugur 2020</a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="middle">
+                    <h4>Keçidlər</h4>
+                    <a th:href="@{/products(page=1)}">Kateqoriyalar</a>
+                    <a th:href="@{/about}">Haqqımızda</a>
+                    <a th:href="@{/contact}">Əlaqə</a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="right">
+                    <h4>Əlaqə</h4>
+                    <i class="fas fa-map-marker-alt">
+                        <span>Məmməd Araz küçəsi, Avesta konserni</span>
+                    </i>
+                    <br>
+                    <i class="fas fa-phone-volume">
+                        <span>050 265 64 63</span>
+                    </i>
+                    <br>
+                    <a href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer -->
+
+<i id="to_top" class="fas fa-chevron-up"></i>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{/js/main.js}"></script>
+<script type="text/javascript" th:src="@{/js/header.js}"></script>
+
+</html>

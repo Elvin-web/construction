@@ -14,7 +14,10 @@ import static java.util.Objects.isNull;
 
 public class Method {
 
-    private static final String url = "C:\\Users\\DELL\\Desktop\\freeLance\\upload\\";
+//    private static final String url = "C:\\Users\\DELL\\Desktop\\freeLance\\upload\\";
+
+    private static final String url = "/home/media/pictures/";
+
 
     public static String fileRead(String image) throws IOException {
 

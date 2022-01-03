@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/category","/category/**","/products/**", "/product-category/**",
                         "/product-name", "/product-name/**","/product-name-page/**","/product-amount/**",
                         "/index","/about","/contact", "/logout",
-                        "/resources/**", "/img/**", "/photos/**","/slick/**","/js/**").permitAll()
+                        "/resources/**", "/img/**", "/photos/**","/slick/**","/js/**","/images/**").permitAll()
                 .antMatchers("/profile").access("hasAnyRole('ROLE_SUPER_ADMIN','ROLE_ADMIN')")
                 .antMatchers("/user", "/users", "/academicDegree")
                 .access("hasRole('ROLE_SUPER_ADMIN')")
@@ -76,7 +76,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         web.httpFirewall(allowUrlEncodedSlashHttpFirewall());
         web.ignoring()
                 .antMatchers("/resources/**", "/static/**",
-                        "/templates/**", "/css/**", "/js/**", "/img/**","/photos/**","/slick/**");
+                        "/templates/**", "/css/**", "/js/**", "/img/**","/photos/**","/slick/**","/images/**");
     }
 
     @Bean

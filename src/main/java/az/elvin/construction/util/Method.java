@@ -16,7 +16,9 @@ public class Method {
 
 //    private static final String url = "C:\\Users\\DELL\\Desktop\\freeLance\\upload\\";
 
-    private static final String url = "/home/k-ugur/media/";
+   // private static final String url = "http://127.0.1.1:8080/images/";
+
+    private static final String url = "/opt/tomcat/webapps/images/";
 
 
     public static String fileRead(String image) throws IOException {

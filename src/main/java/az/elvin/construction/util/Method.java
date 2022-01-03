@@ -16,7 +16,7 @@ public class Method {
 
 //    private static final String url = "C:\\Users\\DELL\\Desktop\\freeLance\\upload\\";
 
-    private static final String url = "/home/media/pictures/";
+    private static final String url = "/home/k-ugur/media/";
 
 
     public static String fileRead(String image) throws IOException {

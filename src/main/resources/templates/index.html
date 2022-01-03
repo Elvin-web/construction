@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -29,7 +29,8 @@
             <div class="col-lg-6 middle">
                 <ul>
                     <li>
-                        <a style="background-color: #fdc236;border-radius: 5px;color: #fff" th:href="@{/index}">ANA SƏHİFƏ </a>
+                        <a style="background-color: #fdc236;border-radius: 5px;color: #fff" th:href="@{/index}">ANA
+                            SƏHİFƏ </a>
                     </li>
                     <li>
                         <a th:href="@{/products(page=1)}">KATEQORİYALAR </a>
@@ -48,8 +49,9 @@
                 <form th:action="@{/products/}" class="search-box">
                     <div class="col-lg-2 right">
                         <div class="search-box">
-                            <input type="text" th:name="name" placeholder="Mən axtarıram..." class="search-input" autocomplete="off">
-                           <input type="text" hidden th:name="page" th:value="1">
+                            <input type="text" th:name="name" placeholder="Mən axtarıram..." class="search-input"
+                                   autocomplete="off">
+                            <input type="text" hidden th:name="page" th:value="1">
                             <button type="submit" class="search-btn-main">
                                 <i class="fas fa-search"></i>
                             </button>
@@ -141,7 +143,8 @@
         <div class="slider-text">
             <h5 data-aos="fade-right" data-aos-duration="1000">Ən <span id="changingText"></span></h5>
             <h3 data-aos="fade-left" data-aos-duration="1000">Tikinti məhsulları burada!</h3>
-            <a style="display: inline-block;" data-aos="fade-right" data-aos-duration="1000" th:href="@{/products(page=1)}">Daha
+            <a style="display: inline-block;" data-aos="fade-right" data-aos-duration="1000"
+               th:href="@{/products(page=1)}">Daha
                 ətraflı </a>
         </div>
     </div>
@@ -197,9 +200,13 @@
             </div>
             <div class="col-lg-6">
                 <div data-aos="fade-left" data-aos-duration="1000" class="right">
-                    <p>Qarabağ-Uğur 2020 MMC 2020-ci ildən fəaliyyətə başlamışdır və qısa bir müddət ərzində müştərilərinin etibarını qazanaraq lider şirkətlərdən birinə çevrilmişdir.
-                        Şirkətimiz tikinti materiallarının (əsasən taxta məhsulları) ən keyfiyyətli və ən ucuz şəkildə satışını həyata keçirir.
-                        Əgər bizim şirkətə etibar etsəniz heç vaxt yanılmarsınız. Çünki məhz bizim şirkət sizin tələbinizə və istəyinizə uyğun məhsul satışını ən qısa müddət ərzində, sizə uyğun olan ən sərfəli şərtlər ilə və ən əsası hüquqi cəhətdən düzgün qaydada həyata keçirəcək</p>
+                    <p>Qarabağ-Uğur 2020 MMC 2020-ci ildən fəaliyyətə başlamışdır və qısa bir müddət ərzində
+                        müştərilərinin etibarını qazanaraq lider şirkətlərdən birinə çevrilmişdir.
+                        Şirkətimiz tikinti materiallarının (əsasən taxta məhsulları) ən keyfiyyətli və ən ucuz şəkildə
+                        satışını həyata keçirir.
+                        Əgər bizim şirkətə etibar etsəniz heç vaxt yanılmarsınız. Çünki məhz bizim şirkət sizin
+                        tələbinizə və istəyinizə uyğun məhsul satışını ən qısa müddət ərzində, sizə uyğun olan ən
+                        sərfəli şərtlər ilə və ən əsası hüquqi cəhətdən düzgün qaydada həyata keçirəcək</p>
                 </div>
             </div>
         </div>
@@ -243,9 +250,15 @@
 <section id="Products">
     <div class="container">
         <h4 class="text-center">Məhsullar</h4>
-
         <div class="row">
+            <tr th:if="${products.productDtoList}==null">
+            <tr th:if="${#lists.isEmpty(products.productDtoList)}">
+            <h5><p style="text-align:center">Hal hazırda heç bir məhsul yoxdur. </p></h5>
+            </tr>
+            </tr>
 
+            <tr th:if="${products}!=null">
+            <tr th:if="${not #lists.isEmpty(products.productDtoList)}">
             <tr th:each="product: ${products.productDtoList}">
 
                 <div class="col-lg-3 col-12 mt-3">
@@ -265,6 +278,8 @@
                         </div>
                     </div>
                 </div>
+            </tr>
+            </tr>
             </tr>
             </tr>
         </div>

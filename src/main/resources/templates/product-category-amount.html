@@ -30,7 +30,8 @@
                         <a th:href="@{/index}">Ana səhifə </a>
                     </li>
                     <li onclick="ToggleLi()">
-                        <a style="background-color: #fdc236;border-radius: 5px;color: #fff" th:href="@{/products(page=1)}">Kateqoriyalar </a>
+                        <a style="background-color: #fdc236;border-radius: 5px;color: #fff"
+                           th:href="@{/products(page=1)}">Kateqoriyalar </a>
                     </li>
                     <li>
                         <a th:href="@{/about}">Haqqımızda </a>
@@ -166,7 +167,7 @@
             <ul>
                 <tr th:each="category: ${categories}">
                     <li>
-                            <h5><a th:href="@{/products/category(name=${category.name},page=1)}">
+                        <h5><a th:href="@{/products/category(name=${category.name},page=1)}">
                             <td th:text="${category.getName()}"/>
                         </a></h5>
                     </li>
@@ -205,6 +206,13 @@
                 <h4>Məhsullar</h4>
                 <div class="row">
 
+                    <tr th:if="${products.productDtoList}==null">
+                    <tr th:if="${#lists.isEmpty(products.productDtoList)}">
+                        <h5><p style="text-align:center">Hal hazırda heç bir məhsul yoxdur. </p></h5>
+                    </tr>
+                    </tr>
+                    <tr th:if="${products}!=null">
+                    <tr th:if="${not #lists.isEmpty(products.productDtoList)}">
                     <tr th:each="product: ${products.productDtoList}">
 
                         <div class="col-lg-4 col-12 mt-3">
@@ -226,16 +234,25 @@
                             </div>
                         </div>
                     </tr>
-
+                    </tr>
+                    </tr>
                     <nav aria-label="pagination">
                         <ol class="pagination justify-content-end mt-5">
-                            <th:block th:each="i: ${#numbers.sequence(1, products.pageCount)}">
+                            <tr th:if="${products.pageCount}==0">
                                 <li>
-                                    <a th:href="@{products/category(name=${products.categoryName},min=${products.min}
-                                    ,max=${products.max},page=${i})}"
-                                       aria-label="Page 1" th:text="${i}" aria-current="page"></a>
+                                    <a th:href="@{/products(page=1)}"
+                                       aria-label="Page 1" th:text="1" aria-current="page"></a>
                                 </li>
-                            </th:block>
+                            </tr>
+                            <tr th:if="${products.pageCount}!=0">
+                                <th:block th:each="i: ${#numbers.sequence(1, products.pageCount)}">
+                                    <li>
+                                        <a th:href="@{products/category(name=${products.categoryName},min=${products.min}
+                                    ,max=${products.max},page=${i})}"
+                                           aria-label="Page 1" th:text="${i}" aria-current="page"></a>
+                                    </li>
+                                </th:block>
+                            </tr>
                         </ol>
                     </nav>
                 </div>

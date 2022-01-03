@@ -207,6 +207,13 @@
                 <h4>Məhsullar</h4>
                 <div class="row">
 
+                    <tr th:if="${products.productDtoList}==null">
+                    <tr th:if="${#lists.isEmpty(products.productDtoList)}">
+                        <h5><p style="text-align:center">Hal hazırda heç bir məhsul yoxdur. </p></h5>
+                    </tr>
+                    </tr>
+                    <tr th:if="${products}!=null">
+                    <tr th:if="${not #lists.isEmpty(products.productDtoList)}">
                     <tr th:each="product: ${products.productDtoList}">
 
                         <div class="col-lg-4 col-12 mt-3">
@@ -228,17 +235,27 @@
                             </div>
                         </div>
                     </tr>
-
+                    </tr>
+                    </tr>
                     <!--                    <tr th:text="${products.pageCount}">-->
 
                     <nav aria-label="pagination">
                         <ol class="pagination justify-content-end mt-5">
-                            <th:block th:each="i: ${#numbers.sequence(1, products.pageCount)}">
+                            <tr th:if="${products.pageCount}==0">
                                 <li>
-                                    <a th:href="@{/products(page=${i})}"
-                                       aria-label="Page 1" th:text="${i}" aria-current="page"></a>
+                                    <a th:href="@{/products(page=1)}"
+                                       aria-label="Page 1" th:text="1" aria-current="page"></a>
                                 </li>
-                            </th:block>
+                            </tr>
+                            <tr th:if="${products.pageCount}!=0">
+                                <th:block th:each="i: ${#numbers.sequence(1, products.pageCount)}">
+
+                                    <li>
+                                        <a th:href="@{/products(page=${i})}"
+                                           aria-label="Page 1" th:text="${i}" aria-current="page"></a>
+                                    </li>
+                                </th:block>
+                            </tr>
                         </ol>
                     </nav>
                 </div>
